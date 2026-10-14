@@ -1,0 +1,58 @@
+html {
+    font-size: 10px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+form {
+    display: flex;
+    gap: 10px;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+h1 {
+    font-size: 5rem;
+}
+
+input {
+    font-size: 1.8rem;
+    padding: 12px;
+    border-radius: 0.6rem;
+}
+
+.todo-list {
+    background-color: #374236;
+    height: 50%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5rem;
+    margin: auto;
+    margin-top: 15%;
+    border-radius: 1rem;
+    box-shadow: rgb(67,67,67)5px 5px 5px 5px;
+}
+
+.divDeCima {
+    text-align: center;
+}
+
+.button-addItem {
+    background-color: #825E73;
+    color: #232c23;
+}
+
+.corEscrita {
+    color: #825E73;
+}
+
+.listaElementos {
+    background-color: gray;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+}
