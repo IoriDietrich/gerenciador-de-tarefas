@@ -1,4 +1,4 @@
-;(function() {
+; (function () {
 
     let arrTasks = getSavedData()
 
@@ -6,7 +6,7 @@
         let tasksData = localStorage.getItem("tasks")
         tasksData = JSON.parse(tasksData)
 
-        if(tasksData) {
+        if (tasksData) {
             return tasksData
         } else {
             return [
@@ -15,7 +15,7 @@
                     createdAt: Date.now(),
                     completed: false,
                 },
-               
+
             ]
         }
     }
@@ -30,21 +30,21 @@
     const toDoAddItem = document.getElementById("todo-add")
     const toDoList = document.getElementById("todo-list")
     const toDoItems = toDoList.getElementsByTagName("li")
-    
-    toDoAddItem.addEventListener("submit", function(e) {
+
+    toDoAddItem.addEventListener("submit", function (e) {
         e.preventDefault()
-        if(itemInput.value) {
+        if (itemInput.value) {
             addTask(itemInput.value)
             itemInput.value = ""
             itemInput.focus()
         }
     })
 
-    toDoList.addEventListener("click", function(e) {
+    toDoList.addEventListener("click", function (e) {
         let action = e.target.getAttribute("action")
-        if(!action) return
+        if (!action) return
         let task = e.target
-        while(task.nodeName !== "LI") {
+        while (task.nodeName !== "LI") {
             task = task.parentElement
         }
         let taskIndex = [...toDoItems].indexOf(task)
@@ -52,12 +52,12 @@
         let containerEditInput = editContainer.querySelector(".editInput")
         let containerEditButton = editContainer.querySelector(".editButton")
         const actions = {
-            checkButton: function() {
+            checkButton: function () {
                 arrTasks[taskIndex].completed = !arrTasks[taskIndex].completed
                 renderTasks()
             },
-            editButton: function() {
-                [...toDoList.querySelectorAll(".editContainer")].forEach(function(editContainer) {
+            editButton: function () {
+                [...toDoList.querySelectorAll(".editContainer")].forEach(function (editContainer) {
                     editContainer.style.display = "none"
                 })
                 editContainer.style.display = "flex"
@@ -65,7 +65,7 @@
                 containerEditInput.focus()
 
                 function acessibility(e) {
-                    switch(e.key) {
+                    switch (e.key) {
                         case "Enter":
                             actions.containerEditButton()
                             editContainer.removeEventListener("keydown", acessibility)
@@ -76,22 +76,22 @@
                 }
                 editContainer.addEventListener("keydown", acessibility)
             },
-            deleteButton: function() {
+            deleteButton: function () {
                 arrTasks.splice(taskIndex, 1)
                 renderTasks()
                 setNewData()
             },
-            containerEditButton: function() {
+            containerEditButton: function () {
                 arrTasks[taskIndex].name = containerEditInput.value
                 renderTasks()
                 setNewData()
             },
-            containerCancelButton: function() {
+            containerCancelButton: function () {
                 editContainer.style.display = "none"
             }
         }
 
-        if(actions[action]) {
+        if (actions[action]) {
             actions[action]()
         }
     })
@@ -127,7 +127,7 @@
 
     function renderTasks() {
         toDoList.innerHTML = ""
-        arrTasks.forEach(function(taskObject) {
+        arrTasks.forEach(function (taskObject) {
             toDoList.append(taskBuilder(taskObject))
         })
     }
